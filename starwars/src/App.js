@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import './App.css';
+import Cards from "./components/Cards"
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -20,9 +21,14 @@ const App = () => {
   },[] )
   console.log(people)
   return (
-    
     <div className="App">
+
       <h1 className="Header">React Wars</h1>
+
+      {people.map((e,i) => {return (
+        <Cards data={e} key={i}/>
+      )})}
+
     </div>
   );
 }
