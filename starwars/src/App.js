@@ -29,7 +29,7 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
-      <Row className="mb-2">
+      <Row >
         
         {people.map((e,i) => {return (
           <Cards data={e} key={i}/>

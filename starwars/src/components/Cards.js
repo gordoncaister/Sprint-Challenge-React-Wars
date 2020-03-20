@@ -3,8 +3,8 @@ import { Col, Card, CardSubtitle, CardTitle, CardText, CardHeader, CardBody } fr
 
  const Cards = (props) => {
     return(
-        <Col lg="4">
-            <Card>
+        <Col lg="3" md="4" sm="6" xs="12">
+            <Card style={{marginBottom:"2rem",opacity:"0.8"}}>
                 <CardHeader><CardTitle >{props.data.name}</CardTitle></CardHeader>
                 <CardBody>
                 <CardSubtitle>Statistics:</CardSubtitle>
@@ -14,7 +14,6 @@ import { Col, Card, CardSubtitle, CardTitle, CardText, CardHeader, CardBody } fr
                 </CardBody>
             </Card>
         </Col>
-        
     )
 }
 
