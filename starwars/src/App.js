@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import './App.css';
 import Cards from "./components/Cards"
-import {Row, PaginationItem, PaginationLink, Pagination} from "reactstrap";
+import {Row, PaginationItem, PaginationLink, Pagination, Col} from "reactstrap";
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -13,7 +13,6 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
   
-
   useEffect(
     ()=>{
       axios.get(`https://swapi.co/api/people/?page=${page}`)
@@ -27,6 +26,15 @@ const App = () => {
   },[page] )
 
   console.log(people)
+
+  function displayPage(i){
+    if(page == 1){
+      return 3+i;
+    } else if(page==2) {
+      return 4+i;
+    }
+    return page+i;
+  }
 
   function changePage(e){
     console.log("button clicked"+e)
@@ -42,8 +50,8 @@ const App = () => {
           <Cards data={e} key={i}/>
         )})}
       </Row>
-      
-      <Pagination aria-label="Page navigation example">
+  
+      <Pagination aria-label="Page navigation example" style={{justifyContent:"center"}}>
     <PaginationItem >
         <PaginationLink first href="#" onClick={ () =>changePage(1) }/>
       </PaginationItem >
@@ -52,27 +60,27 @@ const App = () => {
       </PaginationItem>
       <PaginationItem>
         <PaginationLink href="#" onClick={ () =>changePage(1) } >
-          1{}
+        {displayPage(-2)}
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
         <PaginationLink href="#" onClick={ () =>changePage(2) }>
-          2
+        {displayPage(-1)}
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
         <PaginationLink href="#" onClick={ () =>changePage(3)}>
-          3
+        {displayPage(0)}
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
         <PaginationLink href="#" onClick={ () =>changePage(4)}>
-          4
+        {displayPage(1)}
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
         <PaginationLink href="#" onClick={ () =>changePage(5)}>
-          5
+        {displayPage(2)}
         </PaginationLink>
       </PaginationItem>
       <PaginationItem>
@@ -81,8 +89,7 @@ const App = () => {
       <PaginationItem>
         <PaginationLink last href="#" onClick={ () =>changePage(8) }/>
       </PaginationItem>
-    </Pagination>
-
+    </Pagination>   
       
     </div>
   );
